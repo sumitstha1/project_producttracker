@@ -16,9 +16,7 @@ class Product(models.Model):
     desc = models.CharField(max_length=200)
     price = models.CharField(max_length=100)
     quantity = models.IntegerField()
-    img = models.CharField(max_length=200, null = True, blank=True)
     category = models.CharField(max_length=100)
-    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'pt_products'
