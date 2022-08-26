@@ -5,5 +5,39 @@ PRODUCT Edit
 {% endblock %}
 
 {% block body_content %}
-<h1>Product Edit</h1>
+<div class="container">
+    <h1>Product Edit</h1>
+    
+    <h5><a href="{% url 'product.index'%}">View List</a></h5>
+    <form action="{% url 'product.update' %}" method='POST'>
+        {% csrf_token %}
+        <input type="hidden" name="id" value={{ product.id }}>
+        <div class="form-group mb-2">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" value="{{ product.title }}" name="title">
+        </div>
+
+        <div class="form-group mb-2">
+            <label for="title">Desc:</label>
+            <input type="text" class="form-control" value="{{ product.desc }}" name="desc">
+        </div>
+
+        <div class="form-group mb-2">
+            <label for="title">Price:</label>
+            <input type="text" class="form-control" value="{{ product.price }}" name="price">
+        </div>
+
+        <div class="form-group mb-2">
+            <label for="title">Quantity:</label>
+            <input type="number name=""" class="form-control" value="{{ product.quantity }}" name="quantity">
+        </div>
+        
+        <div class="form-group mb-2">
+            <label for="title">Category:</label>
+            <input type="text" class="form-control" value="{{ product.category }}" name="category">
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+
 {% endblock %}

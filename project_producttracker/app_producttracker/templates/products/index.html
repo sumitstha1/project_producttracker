@@ -4,38 +4,43 @@
 PRODUCT list
 {% endblock %}
 
-{% block body_content %}
-<h1>Product List</h1>
-<h5><a href="{% url 'product.create'%}">Add New</a></h5>
+{% block custom_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />{% endblock %}
 
-<table class="table table-dark table-striped">
-    <thead>
-        <tr>
-            <th>S.N</th>
-            <th>Title</th>
-            <th>Desc</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Category</th>
-            <th>Action</th>
-         </tr>
-    </thead>
-    <tbody>
-        {% for product in products %}
-        <tr>
-            <td>{{ forloop.counter }}</td>
-            <td>{{ product.title }}</td>
-            <td>{{ product.desc }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.quantity }}</td>
-            <td>{{ product.category }}</td>
-            <td>
-                <a href='#'>Show</a>
-                <a href='#'>Edit</a>
-                <a href='#'>Delete</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+{% block body_content %}
+<div class="container-fluid">
+    <h1>Product List</h1>
+    <h5><a href="{% url 'product.create'%}">Add New</a></h5>
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>S.N</th>
+                <th>Title</th>
+                <th>Desc</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Category</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.desc }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.category }}</td>
+                <td>
+                    <a href="{% url 'product.show' product.id %}"><i class="fa-solid fa-eye" alt="edit"></i></a>
+                    <a href="{% url 'product.edit' product.id %}"><i class="fa-solid fa-pencil"></i></a>
+                    <a href="{% url 'product.delete' product.id %}"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

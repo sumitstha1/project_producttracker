@@ -5,5 +5,19 @@ PRODUCT Show
 {% endblock %}
 
 {% block body_content %}
-<h1>Product Show</h1>
+<div class="container">
+    <h1>Product Show</h1>
+    <h5><a href="{% url 'product.index'%}">View List</a></h5>
+    <div class="card-header">
+        <h3 class="card-title">
+            {{ product.title }}
+        </h3>
+    </div>
+    <div class="card-body">
+        <h3>Desc: {{ product.desc }}</h3>
+        <h3>Price: {{ product.price }}</h3>
+        <h3>Quantity: {{ product.quantity }}</h3>
+        <h3>Category: {{ product.category }}</h3>
+    </div>
+</div>
 {% endblock %}
